@@ -22,6 +22,7 @@ var trivia = [
     }
 ];
 
+// HTML element variables
 var startEl = document.getElementById('start');
 var quizEl = document.getElementById('quiz');
 var startBttn = document.getElementById('start-bttn');
@@ -30,9 +31,11 @@ var questionEl = document.getElementById('question');
 var bttnChoices = choicesEl.querySelectorAll('button');
 var timerEl = document.getElementById('timer');
 
+// Declaring global variables
 var triviaIndex;
 var time;
 
+// Initializes the code quiz
 function init() {
     triviaIndex = -1;
     time = 10;
@@ -40,7 +43,8 @@ function init() {
     renderTrivia();
 }
 
-// Randomly chooses the trivia
+// Returns the next trivia object in the trivia array
+// Returns null if there is no more trivia
 function nextTrivia() {
     ++triviaIndex;
 
@@ -52,7 +56,8 @@ function nextTrivia() {
     }
 }
 
-// Initiates and generates a new trivia question and displays the corrosponding choices randomly
+// Initiates and generates a new trivia question
+// Displays the corrosponding choices randomly
 function renderTrivia() {
     var next = nextTrivia();
     if(next !== null) {
@@ -72,6 +77,7 @@ function renderTrivia() {
     }
 }
 
+// Starts the timer and displays the seconds left
 function setTime() {
     var timerInterval = setInterval(function() {
         timerEl.textContent = "Time: " + time;
@@ -99,6 +105,7 @@ startBttn.addEventListener("click", function (event) {
     init();
 });
 
+// When the user clicks one of the trivia answers, renders the next trivia object in the trivia array
 choicesEl.addEventListener("click", function(event) {
     var element = event.target;
 
