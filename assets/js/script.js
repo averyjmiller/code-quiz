@@ -28,13 +28,14 @@ var startBttn = document.getElementById('start-bttn');
 var choicesEl = document.getElementById('choices');
 var questionEl = document.getElementById('question');
 var bttnChoices = choicesEl.querySelectorAll('button');
+var timerEl = document.getElementById('timer');
 
 var triviaIndex;
 var time;
 
 function init() {
     triviaIndex = -1;
-    time = 0;
+    time = 10;
 }
 
 // Randomly chooses the trivia
@@ -69,6 +70,19 @@ function renderTrivia() {
     }
 }
 
+function setTime() {
+    var timerInterval = setInterval(function() {
+        time--;
+        timerEl.textContent = "Time: " + time;
+
+        if(time === 0) {
+            clearInterval(timerInterval);
+            console.log("TIME IS UP");
+        }
+
+    }, 1000);
+}
+
 // When the user clicks the 'Start Quiz' button, initiates the quiz
 startBttn.addEventListener("click", function (event) {
     // Prevents the page from refreshing
@@ -82,6 +96,7 @@ startBttn.addEventListener("click", function (event) {
 
     init();
     renderTrivia();
+    setTime();
 });
 
 choicesEl.addEventListener("click", function(event) {
