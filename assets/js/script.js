@@ -26,6 +26,7 @@ var startEl = document.getElementById('start');
 var quizEl = document.getElementById('quiz');
 var startBttn = document.getElementById('start-bttn');
 var choicesEl = document.getElementById('choices');
+var questionEl = document.getElementById('question');
 var bttnChoices = choicesEl.querySelectorAll('button');
 
 // Randomly chooses the trivia
@@ -38,10 +39,13 @@ function chooseRandomTrivia() {
 // Initiates and generates a new trivia question and displays the corrosponding choices randomly
 function nextTrivia() {
     var nextTrivia = chooseRandomTrivia();
+    var question = nextTrivia.question;
     var answer = nextTrivia.answer;
     var decoys = nextTrivia.decoys;
     var possibleChoices = answer.concat(decoys);
     var randomIndex;
+
+    questionEl.textContent = question;
 
     for(i = 0; i < 4; i++){
         randomIndex = Math.floor(Math.random() * possibleChoices.length);
