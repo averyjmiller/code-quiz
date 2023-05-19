@@ -1,3 +1,4 @@
+// Trivia object array
 var trivia = [
     {
         question: "This is question 1?",
@@ -21,3 +22,17 @@ var trivia = [
     }
 ];
 
+var startEl = document.getElementById('start');
+var quizEl = document.getElementById('quiz');
+var startBttn = document.getElementById('start-bttn');
+
+startBttn.addEventListener("click", function (event) {
+    // Prevents the page from refreshing
+    event.preventDefault();
+    // Makes the quiz visible
+    quizEl.dataset.state = 'visible';
+    quizEl.setAttribute("style", "display: block");
+    // Makes the start screen hidden
+    startEl.dataset.state = 'hidden';
+    startEl.setAttribute("style", "display: none");
+});

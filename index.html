@@ -18,7 +18,17 @@
 
             <section id="timer">Time: </section>
 
-            <section id="quiz">
+            <section id="start" data-state="visible">
+                <h1>Coding Quiz Challenge</h1>
+                <p>
+                    Try to answer the following code-related questions
+                    within the time limit. Keep in mind that incorrect
+                    answers will penalize your score/time by ten seconds!
+                </p>
+                <button id="start-bttn">Start Quiz</button>
+            </section>
+
+            <section id="quiz" data-state="hidden">
                 <h1 id="question">Question</h1>
                 <section id="choices">
                     <button data-index="1">Choice 1</button>
