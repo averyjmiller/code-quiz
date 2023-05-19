@@ -36,6 +36,8 @@ var time;
 function init() {
     triviaIndex = -1;
     time = 10;
+    setTime();
+    renderTrivia();
 }
 
 // Randomly chooses the trivia
@@ -72,8 +74,8 @@ function renderTrivia() {
 
 function setTime() {
     var timerInterval = setInterval(function() {
-        time--;
         timerEl.textContent = "Time: " + time;
+        time--;
 
         if(time === 0) {
             clearInterval(timerInterval);
@@ -95,8 +97,6 @@ startBttn.addEventListener("click", function (event) {
     startEl.setAttribute("style", "display: none");
 
     init();
-    renderTrivia();
-    setTime();
 });
 
 choicesEl.addEventListener("click", function(event) {
