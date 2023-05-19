@@ -29,28 +29,43 @@ var choicesEl = document.getElementById('choices');
 var questionEl = document.getElementById('question');
 var bttnChoices = choicesEl.querySelectorAll('button');
 
-// Randomly chooses the trivia
-function chooseRandomTrivia() {
-    var index = Math.floor(Math.random() * trivia.length);
+var triviaIndex;
+var time;
 
-    return trivia[index];
+function init() {
+    triviaIndex = -1;
+    time = 0;
+}
+
+// Randomly chooses the trivia
+function nextTrivia() {
+    ++triviaIndex;
+
+    if(triviaIndex < trivia.length) {
+        return trivia[triviaIndex];
+    } else {
+        console.log('Finished');
+        return null;
+    }
 }
 
 // Initiates and generates a new trivia question and displays the corrosponding choices randomly
-function nextTrivia() {
-    var nextTrivia = chooseRandomTrivia();
-    var question = nextTrivia.question;
-    var answer = nextTrivia.answer;
-    var decoys = nextTrivia.decoys;
-    var possibleChoices = answer.concat(decoys);
-    var randomIndex;
-
-    questionEl.textContent = question;
-
-    for(i = 0; i < 4; i++){
-        randomIndex = Math.floor(Math.random() * possibleChoices.length);
-        bttnChoices[i].textContent = possibleChoices[randomIndex];
-        possibleChoices.splice(randomIndex, 1);
+function renderTrivia() {
+    var next = nextTrivia();
+    if(next !== null) {
+        var question = next.question;
+        var answer = next.answer;
+        var decoys = next.decoys;
+        var possibleChoices = answer.concat(decoys);
+        var randomIndex;
+    
+        questionEl.textContent = question;
+    
+        for(i = 0; i < 4; i++){
+            randomIndex = Math.floor(Math.random() * possibleChoices.length);
+            bttnChoices[i].textContent = possibleChoices[randomIndex];
+            possibleChoices.splice(randomIndex, 1);
+        }
     }
 }
 
@@ -65,5 +80,14 @@ startBttn.addEventListener("click", function (event) {
     startEl.dataset.state = 'hidden';
     startEl.setAttribute("style", "display: none");
 
-    nextTrivia();
+    init();
+    renderTrivia();
+});
+
+choicesEl.addEventListener("click", function(event) {
+    var element = event.target;
+
+    if(element.matches('button')) {
+        renderTrivia();
+    }
 });
