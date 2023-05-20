@@ -151,8 +151,9 @@ submitBttn.addEventListener("click", function(event) {
     event.preventDefault();
 
     if(initialsEl.value) {
-        console.log("Submitted!");
+        console.log(initialsEl.value);
     } else {
-        console.log("You did not enter anything");
+        initialsEl.value = "Anonymous";
+        console.log(initialsEl.value);
     }
 });
