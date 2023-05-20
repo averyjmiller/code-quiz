@@ -31,6 +31,7 @@ var questionEl = document.getElementById('question');
 var bttnChoices = choicesEl.querySelectorAll('button');
 var timerEl = document.getElementById('timer');
 var saveScoreEl = document.getElementById('save-score');
+var userScoreEl = document.getElementById('score');
 
 // Declaring global variables
 var triviaIndex;
@@ -100,6 +101,7 @@ function endOfQuiz() {
     timerEl.setAttribute("style", "visibility: hidden");
     
     saveScoreEl.setAttribute("style", "display: block");
+    userScoreEl.textContent = "Your final score is " + score;
 }
 
 // Starts the timer and displays the seconds left
