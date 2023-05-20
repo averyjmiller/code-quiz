@@ -34,13 +34,15 @@ var timerEl = document.getElementById('timer');
 // Declaring global variables
 var triviaIndex;
 var time;
+var currentAnswer;
 
 // Initializes the code quiz
 function init() {
     triviaIndex = -1;
     time = 10;
     setTime();
-    renderTrivia();
+    currentAnswer = renderTrivia();
+    return currentAnswer;
 }
 
 // Returns the next trivia object in the trivia array
@@ -74,6 +76,15 @@ function renderTrivia() {
             bttnChoices[i].textContent = possibleChoices[randomIndex];
             possibleChoices.splice(randomIndex, 1);
         }
+        return answer
+    }
+}
+
+function checkAnswer(userInput, answer) {
+    if(userInput.textContent == answer) {
+        console.log("CORRECT!");
+    } else {
+        console.log("WRONG!");
     }
 }
 
@@ -102,7 +113,7 @@ startBttn.addEventListener("click", function (event) {
     startEl.dataset.state = 'hidden';
     startEl.setAttribute("style", "display: none");
 
-    init();
+    currentAnswer = init();
 });
 
 // When the user clicks one of the trivia answers, renders the next trivia object in the trivia array
@@ -110,6 +121,7 @@ choicesEl.addEventListener("click", function(event) {
     var element = event.target;
 
     if(element.matches('button')) {
-        renderTrivia();
+        checkAnswer(element, currentAnswer);
+        currentAnswer = renderTrivia();
     }
 });
