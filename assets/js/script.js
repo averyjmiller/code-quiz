@@ -29,6 +29,7 @@ var startBttn = document.getElementById('start-bttn');
 var choicesEl = document.getElementById('choices');
 var questionEl = document.getElementById('question');
 var bttnChoices = choicesEl.querySelectorAll('button');
+var answerResultEl = document.getElementById('answer-result');
 var timerEl = document.getElementById('timer');
 var saveScoreEl = document.getElementById('save-score');
 var userScoreEl = document.getElementById('score');
@@ -91,8 +92,10 @@ function renderTrivia() {
 function checkAnswer(userInput, answer) {
     if(userInput.textContent == answer) {
         score++;
+        answerResultEl.textContent = "Correct!";
     } else {
         time = time - 10;
+        answerResultEl.textContent = "Wrong!";
     }
 }
 
