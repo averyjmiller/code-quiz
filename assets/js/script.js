@@ -32,6 +32,8 @@ var bttnChoices = choicesEl.querySelectorAll('button');
 var timerEl = document.getElementById('timer');
 var saveScoreEl = document.getElementById('save-score');
 var userScoreEl = document.getElementById('score');
+var submitBttn = document.getElementById('submit');
+var initialsEl = document.getElementById('initials');
 
 // Declaring global variables
 var triviaIndex;
@@ -141,5 +143,16 @@ choicesEl.addEventListener("click", function(event) {
     if(element.matches('button')) {
         checkAnswer(element, currentAnswer);
         currentAnswer = renderTrivia();
+    }
+});
+
+// Event listener for when the user submits their initials to save their score
+submitBttn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    if(initialsEl.value) {
+        console.log("Submitted!");
+    } else {
+        console.log("You did not enter anything");
     }
 });
