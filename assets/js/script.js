@@ -35,11 +35,13 @@ var timerEl = document.getElementById('timer');
 var triviaIndex;
 var time;
 var currentAnswer;
+var score;
 
 // Initializes the code quiz
 function init() {
     triviaIndex = -1;
-    time = 10;
+    time = 60;
+    score = 0;
     setTime();
     currentAnswer = renderTrivia();
     return currentAnswer;
@@ -77,15 +79,27 @@ function renderTrivia() {
             possibleChoices.splice(randomIndex, 1);
         }
         return answer
+    } else {
+        time = -1;
+        
     }
 }
 
 function checkAnswer(userInput, answer) {
     if(userInput.textContent == answer) {
-        console.log("CORRECT!");
+        score++;
     } else {
-        console.log("WRONG!");
+        time = time - 10;
     }
+}
+
+function endOfQuiz() {
+    console.log("Your score: " + score);
+
+    quizEl.dataset.state = 'hidden';
+    quizEl.setAttribute("style", "display: none");
+
+    timerEl.setAttribute("style", "visibility: hidden");
 }
 
 // Starts the timer and displays the seconds left
@@ -96,7 +110,7 @@ function setTime() {
 
         if(time < 0) {
             clearInterval(timerInterval);
-            console.log("TIME IS UP");
+            endOfQuiz();
         }
 
     }, 1000);
