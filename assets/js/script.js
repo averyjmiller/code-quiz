@@ -83,7 +83,7 @@ function setTime() {
         timerEl.textContent = "Time: " + time;
         time--;
 
-        if(time === 0) {
+        if(time < 0) {
             clearInterval(timerInterval);
             console.log("TIME IS UP");
         }
