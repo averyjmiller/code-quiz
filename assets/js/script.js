@@ -56,7 +56,6 @@ function nextTrivia() {
     if(triviaIndex < trivia.length) {
         return trivia[triviaIndex];
     } else {
-        console.log('Finished');
         return null;
     }
 }
