@@ -106,6 +106,23 @@ function endOfQuiz() {
     userScoreEl.textContent = "Your final score is " + score;
 }
 
+function saveInitials() {
+    var userInitials;
+
+    if(initialsEl.value) {
+        userInitials = initialsEl.value.trim();
+    } else {
+        userInitials = "Anonymous";
+    }
+
+    var scores = {
+        initials: userInitials,
+        score: score
+    };
+
+    localStorage.setItem("scores", JSON.stringify(scores));
+}
+
 // Starts the timer and displays the seconds left
 function setTime() {
     var timerInterval = setInterval(function() {
@@ -149,11 +166,6 @@ choicesEl.addEventListener("click", function(event) {
 // Event listener for when the user submits their initials to save their score
 submitBttn.addEventListener("click", function(event) {
     event.preventDefault();
-
-    if(initialsEl.value) {
-        console.log(initialsEl.value);
-    } else {
-        initialsEl.value = "Anonymous";
-        console.log(initialsEl.value);
-    }
+    
+    saveInitials();
 });
