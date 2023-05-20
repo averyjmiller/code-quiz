@@ -30,6 +30,7 @@ var choicesEl = document.getElementById('choices');
 var questionEl = document.getElementById('question');
 var bttnChoices = choicesEl.querySelectorAll('button');
 var timerEl = document.getElementById('timer');
+var saveScoreEl = document.getElementById('save-score');
 
 // Declaring global variables
 var triviaIndex;
@@ -94,12 +95,12 @@ function checkAnswer(userInput, answer) {
 }
 
 function endOfQuiz() {
-    console.log("Your score: " + score);
-
+    // Hides the code quiz and the timer
     quizEl.dataset.state = 'hidden';
     quizEl.setAttribute("style", "display: none");
-
     timerEl.setAttribute("style", "visibility: hidden");
+    
+    saveScoreEl.setAttribute("style", "display: block");
 }
 
 // Starts the timer and displays the seconds left
@@ -132,6 +133,8 @@ startBttn.addEventListener("click", function (event) {
 
 // When the user clicks one of the trivia answers, renders the next trivia object in the trivia array
 choicesEl.addEventListener("click", function(event) {
+    event.preventDefault();
+
     var element = event.target;
 
     if(element.matches('button')) {
