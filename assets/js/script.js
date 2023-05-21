@@ -187,6 +187,13 @@ function renderHighScores() {
     }
 }
 
+// Method provided by https://www.w3schools.com/jsref/met_node_removechild.asp
+function clearHighScores() {
+    while(scoreListEl.hasChildNodes()) {
+        scoreListEl.removeChild(scoreListEl.firstChild);
+    }
+}
+
 function renderStartScreen() {
     if(quizEl.dataset.state == 'visible') {
         quizEl.dataset.state = 'hidden';
@@ -254,4 +261,10 @@ backBttn.addEventListener("click", function(event) {
     event.preventDefault();
 
     renderStartScreen();
-})
+});
+
+clearScoresBttn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    clearHighScores();
+});
