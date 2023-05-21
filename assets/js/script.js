@@ -53,6 +53,23 @@ function init() {
     return currentAnswer;
 }
 
+function saveInitials() {
+    var userInitials;
+
+    if(initialsEl.value) {
+        userInitials = initialsEl.value.trim();
+    } else {
+        userInitials = "Anonymous";
+    }
+
+    var scores = {
+        initials: userInitials,
+        score: score
+    };
+
+    localStorage.setItem("scores", JSON.stringify(scores));
+}
+
 // Returns the next trivia object in the trivia array
 // Returns null if there is no more trivia
 function nextTrivia() {
@@ -117,23 +134,6 @@ function endOfQuiz() {
         saveScoreEl.setAttribute("style", "display: block");
         userScoreEl.textContent = "Your final score is " + score;    
     }
-}
-
-function saveInitials() {
-    var userInitials;
-
-    if(initialsEl.value) {
-        userInitials = initialsEl.value.trim();
-    } else {
-        userInitials = "Anonymous";
-    }
-
-    var scores = {
-        initials: userInitials,
-        score: score
-    };
-
-    localStorage.setItem("scores", JSON.stringify(scores));
 }
 
 function renderHighScores() {
