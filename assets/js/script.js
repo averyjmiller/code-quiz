@@ -70,7 +70,7 @@ function setTime() {
 
         if(time < 0) {
             clearInterval(timerInterval);
-            renderSaveScore();
+            renderSaveScoreElement();
         }
 
     }, 1000);
@@ -123,7 +123,7 @@ function checkAnswer(userInput, answer) {
     }
 }
 
-function renderSaveScore() {
+function renderSaveScoreElement() {
     // Hides the code quiz and the timer
     if(quizEl.dataset.state == 'visible') {
         changeVisibility(quizEl, 'hidden');
@@ -209,7 +209,7 @@ function clearHighScores() {
     localStorage.removeItem("scores");
 }
 
-function renderStartScreen() {
+function renderStartElement() {
     if(quizEl.dataset.state == 'visible') {
         changeVisibility(quizEl, 'hidden');
     }
@@ -290,7 +290,7 @@ viewScoresEl.addEventListener("click", function(event) {
 backBttn.addEventListener("click", function(event) {
     event.preventDefault();
 
-    renderStartScreen();
+    renderStartElement();
 });
 
 clearScoresBttn.addEventListener("click", function(event) {
