@@ -36,6 +36,7 @@ var userScoreEl = document.getElementById('score');
 var submitBttn = document.getElementById('submit');
 var initialsEl = document.getElementById('initials');
 var highScoresEl = document.getElementById('high-scores');
+var scoreListEl = document.getElementById('score-list');
 
 // Declaring global variables
 var triviaIndex;
@@ -150,7 +151,7 @@ function saveInitials() {
     localStorage.setItem("scores", JSON.stringify(scores));
 }
 
-function renderHighScores() {
+function renderHighScoresElement() {
     if(quizEl.dataset.state == 'visible') {
         quizEl.dataset.state = 'hidden';
         quizEl.setAttribute("style", "display: none");
@@ -164,6 +165,18 @@ function renderHighScores() {
     if(highScoresEl.dataset.state == 'hidden') {
         highScoresEl.dataset.state = 'visible';
         highScoresEl.setAttribute("style", "display: block");
+    }
+
+    renderHighScores();
+}
+
+function renderHighScores() {
+    var highScore = JSON.parse(localStorage.getItem("scores"));
+
+    if(highScore != null) {
+        var newScore = document.createElement('li');
+        newScore.textContent = highScore.initials + " - " + highScore.score;
+        scoreListEl.appendChild(newScore);
     }
 }
 
@@ -198,6 +211,6 @@ submitBttn.addEventListener("click", function(event) {
     event.preventDefault();
     
     saveInitials();
-    renderHighScores();
+    renderHighScoresElement();
 });
 
