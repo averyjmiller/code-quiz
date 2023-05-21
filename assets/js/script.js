@@ -179,8 +179,6 @@ function renderHighScoresElement() {
         highScoresEl.dataset.state = 'visible';
         highScoresEl.setAttribute("style", "display: block");
     }
-
-    renderHighScores();
 }
 
 function renderHighScores() {
@@ -263,6 +261,7 @@ submitBttn.addEventListener("click", function(event) {
     
     saveInitials();
     renderHighScoresElement();
+    renderHighScores();
 });
 
 viewScoresEl.addEventListener("click", function(event) {
