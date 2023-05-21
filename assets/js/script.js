@@ -39,6 +39,7 @@ var highScoresEl = document.getElementById('high-scores');
 var scoreListEl = document.getElementById('score-list');
 var backBttn = document.getElementById('go-back');
 var clearScoresBttn = document.getElementById('clear-scores');
+var viewScoresEl = document.getElementById('view-scores');
 
 // Declaring global variables
 var triviaIndex;
@@ -165,8 +166,13 @@ function renderHighScoresElement() {
     }
 
     if(timerEl.dataset.state == 'visible') {
-        timerEl.dataset.dtate = 'hidden';
+        timerEl.dataset.state = 'hidden';
         timerEl.setAttribute("style", "visibility: hidden");
+    }
+
+    if(startEl.dataset.state == 'visible') {
+        startEl.dataset.state = 'hidden';
+        startEl.setAttribute("style", "display: none");
     }
 
     if(highScoresEl.dataset.state == 'hidden') {
@@ -254,6 +260,12 @@ submitBttn.addEventListener("click", function(event) {
     event.preventDefault();
     
     saveInitials();
+    renderHighScoresElement();
+});
+
+viewScoresEl.addEventListener("click", function(event) {
+    event.preventDefault();
+
     renderHighScoresElement();
 });
 
