@@ -35,6 +35,7 @@ var saveScoreEl = document.getElementById('save-score');
 var userScoreEl = document.getElementById('score');
 var submitBttn = document.getElementById('submit');
 var initialsEl = document.getElementById('initials');
+var highScoresEl = document.getElementById('high-scores');
 
 // Declaring global variables
 var triviaIndex;
@@ -45,7 +46,7 @@ var score;
 // Initializes the code quiz
 function init() {
     triviaIndex = -1;
-    time = 60;
+    time = 59;
     score = 0;
     setTime();
     currentAnswer = renderTrivia();
@@ -101,12 +102,21 @@ function checkAnswer(userInput, answer) {
 
 function endOfQuiz() {
     // Hides the code quiz and the timer
-    quizEl.dataset.state = 'hidden';
-    quizEl.setAttribute("style", "display: none");
-    timerEl.setAttribute("style", "visibility: hidden");
+    if(quizEl.dataset.state == 'visible') {
+        quizEl.dataset.state = 'hidden';
+        quizEl.setAttribute("style", "display: none");
+    }
+
+    if(timerEl.dataset.state == 'visible') {
+        timerEl.dataset.state = 'hidden';
+        timerEl.setAttribute("style", "visibility: hidden");
+    }
     
-    saveScoreEl.setAttribute("style", "display: block");
-    userScoreEl.textContent = "Your final score is " + score;
+    if(saveScoreEl.dataset.state == 'hidden') {
+        saveScoreEl.dataset.state = 'visible';
+        saveScoreEl.setAttribute("style", "display: block");
+        userScoreEl.textContent = "Your final score is " + score;    
+    }
 }
 
 function saveInitials() {
@@ -124,6 +134,23 @@ function saveInitials() {
     };
 
     localStorage.setItem("scores", JSON.stringify(scores));
+}
+
+function renderHighScores() {
+    if(quizEl.dataset.state == 'visible') {
+        quizEl.dataset.state = 'hidden';
+        quizEl.setAttribute("style", "display: none");
+    }
+
+    if(saveScoreEl.dataset.state == 'visible') {
+        saveScoreEl.dataset.state = 'hidden';
+        saveScoreEl.setAttribute("style", "display none");
+    }
+
+    if(highScoresEl.dataset.state == 'hidden') {
+        highScoresEl.dataset.state = 'visible';
+        highScoresEl.setAttribute("style", "display: block");
+    }
 }
 
 // Starts the timer and displays the seconds left
@@ -171,4 +198,6 @@ submitBttn.addEventListener("click", function(event) {
     event.preventDefault();
     
     saveInitials();
+    renderHighScores();
 });
+
