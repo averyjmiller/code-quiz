@@ -53,21 +53,18 @@ function init() {
     return currentAnswer;
 }
 
-function saveInitials() {
-    var userInitials;
+// Starts the timer and displays the seconds left
+function setTime() {
+    var timerInterval = setInterval(function() {
+        timerEl.textContent = "Time: " + time;
+        time--;
 
-    if(initialsEl.value) {
-        userInitials = initialsEl.value.trim();
-    } else {
-        userInitials = "Anonymous";
-    }
+        if(time < 0) {
+            clearInterval(timerInterval);
+            endOfQuiz();
+        }
 
-    var scores = {
-        initials: userInitials,
-        score: score
-    };
-
-    localStorage.setItem("scores", JSON.stringify(scores));
+    }, 1000);
 }
 
 // Returns the next trivia object in the trivia array
@@ -136,6 +133,23 @@ function endOfQuiz() {
     }
 }
 
+function saveInitials() {
+    var userInitials;
+
+    if(initialsEl.value) {
+        userInitials = initialsEl.value.trim();
+    } else {
+        userInitials = "Anonymous";
+    }
+
+    var scores = {
+        initials: userInitials,
+        score: score
+    };
+
+    localStorage.setItem("scores", JSON.stringify(scores));
+}
+
 function renderHighScores() {
     if(quizEl.dataset.state == 'visible') {
         quizEl.dataset.state = 'hidden';
@@ -151,20 +165,6 @@ function renderHighScores() {
         highScoresEl.dataset.state = 'visible';
         highScoresEl.setAttribute("style", "display: block");
     }
-}
-
-// Starts the timer and displays the seconds left
-function setTime() {
-    var timerInterval = setInterval(function() {
-        timerEl.textContent = "Time: " + time;
-        time--;
-
-        if(time < 0) {
-            clearInterval(timerInterval);
-            endOfQuiz();
-        }
-
-    }, 1000);
 }
 
 // When the user clicks the 'Start Quiz' button, initiates the quiz
