@@ -32,6 +32,7 @@ var bttnChoices = choicesEl.querySelectorAll('button');
 var answerResultEl = document.getElementById('answer-result');
 var timerEl = document.getElementById('timer');
 var saveScoreEl = document.getElementById('save-score');
+var saveScoreHeader = document.getElementById('save-score-header');
 var userScoreEl = document.getElementById('score');
 var submitBttn = document.getElementById('submit');
 var initialsEl = document.getElementById('initials');
@@ -152,7 +153,24 @@ function renderSaveScoreElement() {
         changeVisibility(viewScoresEl, 'visible');
     }
 
+    generateEndMessage();
+
     answerResultEl.textContent = "";
+}
+
+function generateEndMessage() {
+    var resultPercentage = (score / trivia.length) * 100;
+
+    if(resultPercentage < 50) {
+        saveScoreHeader.textContent = 'Yikes! Maybe study a bit more and try again.';
+    } else if(resultPercentage < 80) {
+        saveScoreHeader.textContent = "You're getting the hang of it! Study a little more and try again.";
+    } else if(resultPercentage < 100) {
+        saveScoreHeader.textContent = "Great job!";
+    } else {
+        saveScoreHeader.textContent = "Perfect score!";
+    }
+
 }
 
 function saveInitials() {
