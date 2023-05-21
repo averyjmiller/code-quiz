@@ -198,6 +198,8 @@ function clearHighScores() {
     while(scoreListEl.hasChildNodes()) {
         scoreListEl.removeChild(scoreListEl.firstChild);
     }
+
+    localStorage.removeItem("scores");
 }
 
 function renderStartScreen() {
