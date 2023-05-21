@@ -37,6 +37,8 @@ var submitBttn = document.getElementById('submit');
 var initialsEl = document.getElementById('initials');
 var highScoresEl = document.getElementById('high-scores');
 var scoreListEl = document.getElementById('score-list');
+var backBttn = document.getElementById('go-back');
+var clearScoresBttn = document.getElementById('clear-scores');
 
 // Declaring global variables
 var triviaIndex;
@@ -185,6 +187,35 @@ function renderHighScores() {
     }
 }
 
+function renderStartScreen() {
+    if(quizEl.dataset.state == 'visible') {
+        quizEl.dataset.state = 'hidden';
+        quizEl.setAttribute("style", "display: none");
+    }
+
+    if(saveScoreEl.dataset.state == 'visible') {
+        saveScoreEl.dataset.state = 'hidden';
+        saveScoreEl.setAttribute("style", "display none");
+    }
+
+    if(highScoresEl.dataset.state == 'visible') {
+        highScoresEl.dataset.state = 'hidden';
+        highScoresEl.setAttribute("style", "display: none");
+    }
+
+    if(timerEl.dataset.state == 'hidden') {
+        timerEl.dataset.state = 'visible';
+        timerEl.setAttribute("style", "visibility: visible");
+    }
+
+    if(startEl.dataset.state == 'hidden') {
+        startEl.dataset.state = 'visible';
+        startEl.setAttribute("style", "display: block");
+    }
+
+    timerEl.textContent = "Time: 60";
+}
+
 // When the user clicks the 'Start Quiz' button, initiates the quiz
 startBttn.addEventListener("click", function (event) {
     // Prevents the page from refreshing
@@ -219,3 +250,8 @@ submitBttn.addEventListener("click", function(event) {
     renderHighScoresElement();
 });
 
+backBttn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    renderStartScreen();
+})
