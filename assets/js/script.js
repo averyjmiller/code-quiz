@@ -52,6 +52,12 @@ function init() {
     triviaIndex = -1;
     time = 59;
     score = 0;
+
+    if(viewScoresEl.dataset.state == 'visible') {
+        viewScoresEl.dataset.state = 'hidden';
+        viewScoresEl.setAttribute("style", "display: none");
+    }
+
     setTime();
     currentAnswer = renderTrivia();
     return currentAnswer;
@@ -135,6 +141,11 @@ function endOfQuiz() {
         saveScoreEl.setAttribute("style", "display: block");
         userScoreEl.textContent = "Your final score is " + score;    
     }
+
+    if(viewScoresEl.dataset.state == 'hidden') {
+        viewScoresEl.dataset.state = 'visible';
+        viewScoresEl.setAttribute("style", "display: block");
+    }
 }
 
 function saveInitials() {
@@ -173,6 +184,11 @@ function renderHighScoresElement() {
     if(startEl.dataset.state == 'visible') {
         startEl.dataset.state = 'hidden';
         startEl.setAttribute("style", "display: none");
+    }
+
+    if(viewScoresEl.dataset.state == 'visible') {
+        viewScoresEl.dataset.state = 'hidden';
+        viewScoresEl.setAttribute("style", "display: none");
     }
 
     if(highScoresEl.dataset.state == 'hidden') {
@@ -214,6 +230,11 @@ function renderStartScreen() {
     if(highScoresEl.dataset.state == 'visible') {
         highScoresEl.dataset.state = 'hidden';
         highScoresEl.setAttribute("style", "display: none");
+    }
+
+    if(viewScoresEl.dataset.state == 'hidden') {
+        viewScoresEl.dataset.state = 'visible';
+        viewScoresEl.setAttribute("style", "display: block");
     }
 
     if(timerEl.dataset.state == 'hidden') {
