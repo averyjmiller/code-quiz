@@ -54,8 +54,7 @@ function init() {
     score = 0;
 
     if(viewScoresEl.dataset.state == 'visible') {
-        viewScoresEl.dataset.state = 'hidden';
-        viewScoresEl.setAttribute("style", "display: none");
+        changeVisibility(viewScoresEl, 'hidden');
     }
 
     setTime();
@@ -71,7 +70,7 @@ function setTime() {
 
         if(time < 0) {
             clearInterval(timerInterval);
-            endOfQuiz();
+            renderSaveScore();
         }
 
     }, 1000);
@@ -124,27 +123,23 @@ function checkAnswer(userInput, answer) {
     }
 }
 
-function endOfQuiz() {
+function renderSaveScore() {
     // Hides the code quiz and the timer
     if(quizEl.dataset.state == 'visible') {
-        quizEl.dataset.state = 'hidden';
-        quizEl.setAttribute("style", "display: none");
+        changeVisibility(quizEl, 'hidden');
     }
 
     if(timerEl.dataset.state == 'visible') {
-        timerEl.dataset.state = 'hidden';
-        timerEl.setAttribute("style", "visibility: hidden");
+        changeVisibility(timerEl, 'hidden');
     }
     
     if(saveScoreEl.dataset.state == 'hidden') {
-        saveScoreEl.dataset.state = 'visible';
-        saveScoreEl.setAttribute("style", "display: block");
+        changeVisibility(saveScoreEl, 'visible');
         userScoreEl.textContent = "Your final score is " + score;    
     }
 
     if(viewScoresEl.dataset.state == 'hidden') {
-        viewScoresEl.dataset.state = 'visible';
-        viewScoresEl.setAttribute("style", "display: block");
+        changeVisibility(viewScoresEl, 'visible');
     }
 
     answerResultEl.textContent = "";
@@ -171,33 +166,27 @@ function saveInitials() {
 
 function renderHighScoresElement() {
     if(quizEl.dataset.state == 'visible') {
-        quizEl.dataset.state = 'hidden';
-        quizEl.setAttribute("style", "display: none");
+        changeVisibility(quizEl, 'hidden');
     }
 
     if(saveScoreEl.dataset.state == 'visible') {
-        saveScoreEl.dataset.state = 'hidden';
-        saveScoreEl.setAttribute("style", "display none");
+        changeVisibility(saveScoreEl, 'hidden');
     }
 
     if(timerEl.dataset.state == 'visible') {
-        timerEl.dataset.state = 'hidden';
-        timerEl.setAttribute("style", "visibility: hidden");
+        changeVisibility(timerEl, 'hidden');
     }
 
     if(startEl.dataset.state == 'visible') {
-        startEl.dataset.state = 'hidden';
-        startEl.setAttribute("style", "display: none");
+        changeVisibility(startEl, 'hidden');
     }
 
     if(viewScoresEl.dataset.state == 'visible') {
-        viewScoresEl.dataset.state = 'hidden';
-        viewScoresEl.setAttribute("style", "display: none");
+        changeVisibility(viewScoresEl, 'hidden');
     }
 
     if(highScoresEl.dataset.state == 'hidden') {
-        highScoresEl.dataset.state = 'visible';
-        highScoresEl.setAttribute("style", "display: block");
+        changeVisibility(highScoresEl, 'visible');
     }
 }
 
@@ -222,36 +211,39 @@ function clearHighScores() {
 
 function renderStartScreen() {
     if(quizEl.dataset.state == 'visible') {
-        quizEl.dataset.state = 'hidden';
-        quizEl.setAttribute("style", "display: none");
+        changeVisibility(quizEl, 'hidden');
     }
 
     if(saveScoreEl.dataset.state == 'visible') {
-        saveScoreEl.dataset.state = 'hidden';
-        saveScoreEl.setAttribute("style", "display none");
+        changeVisibility(saveScoreEl, 'hidden');
     }
 
     if(highScoresEl.dataset.state == 'visible') {
-        highScoresEl.dataset.state = 'hidden';
-        highScoresEl.setAttribute("style", "display: none");
+        changeVisibility(highScoresEl, 'hidden');
     }
 
     if(viewScoresEl.dataset.state == 'hidden') {
-        viewScoresEl.dataset.state = 'visible';
-        viewScoresEl.setAttribute("style", "display: block");
+        changeVisibility(viewScoresEl, 'visible');
     }
 
     if(timerEl.dataset.state == 'hidden') {
-        timerEl.dataset.state = 'visible';
-        timerEl.setAttribute("style", "visibility: visible");
+        changeVisibility(timerEl, 'visible');
     }
 
     if(startEl.dataset.state == 'hidden') {
-        startEl.dataset.state = 'visible';
-        startEl.setAttribute("style", "display: block");
+        changeVisibility(startEl, 'visible');
     }
 
     timerEl.textContent = "Time: 60";
+}
+
+function changeVisibility(element, visibility) {
+    element.dataset.state = visibility;
+    if(visibility === 'visible') {
+        element.setAttribute("style", "display: block")
+    } else {
+        element.setAttribute("style", "display: none")
+    }
 }
 
 // When the user clicks the 'Start Quiz' button, initiates the quiz
