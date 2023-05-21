@@ -52,14 +52,24 @@ function init() {
     triviaIndex = -1;
     time = 59;
     score = 0;
+    renderQuizElement();
+    setTime();
+    currentAnswer = renderTrivia();
+    return currentAnswer;
+}
 
+function renderQuizElement() {
     if(viewScoresEl.dataset.state == 'visible') {
         changeVisibility(viewScoresEl, 'hidden');
     }
 
-    setTime();
-    currentAnswer = renderTrivia();
-    return currentAnswer;
+    if(startEl.dataset.state == 'visible') {
+        changeVisibility(startEl, 'hidden');
+    }
+
+    if(quizEl.dataset.state == 'hidden') {
+        changeVisibility(quizEl, 'visible');
+    }
 }
 
 // Starts the timer and displays the seconds left
@@ -250,12 +260,6 @@ function changeVisibility(element, visibility) {
 startBttn.addEventListener("click", function (event) {
     // Prevents the page from refreshing
     event.preventDefault();
-    // Makes the quiz visible
-    quizEl.dataset.state = 'visible';
-    quizEl.setAttribute("style", "display: block");
-    // Makes the start screen hidden
-    startEl.dataset.state = 'hidden';
-    startEl.setAttribute("style", "display: none");
 
     currentAnswer = init();
 });
