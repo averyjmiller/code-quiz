@@ -162,6 +162,11 @@ function renderHighScoresElement() {
         saveScoreEl.setAttribute("style", "display none");
     }
 
+    if(timerEl.dataset.state == 'visible') {
+        timerEl.dataset.dtate = 'hidden';
+        timerEl.setAttribute("style", "visibility: hidden");
+    }
+
     if(highScoresEl.dataset.state == 'hidden') {
         highScoresEl.dataset.state = 'visible';
         highScoresEl.setAttribute("style", "display: block");
