@@ -146,6 +146,8 @@ function endOfQuiz() {
         viewScoresEl.dataset.state = 'visible';
         viewScoresEl.setAttribute("style", "display: block");
     }
+
+    answerResultEl.textContent = "";
 }
 
 function saveInitials() {
