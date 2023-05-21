@@ -165,6 +165,8 @@ function saveInitials() {
     };
 
     localStorage.setItem("scores", JSON.stringify(scores));
+
+    initialsEl.value = "";
 }
 
 function renderHighScoresElement() {
