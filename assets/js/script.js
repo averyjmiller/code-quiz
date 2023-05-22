@@ -1,24 +1,24 @@
 // Trivia object array
 var trivia = [
     {
-        question: "This is question 1?",
-        answer: ["This is the correct answer for Q1."],
-        decoys: ["decoy 1", "decoy 2", "decoy 3"]
+        question: "Commonly used data types DO not include:",
+        answer: ["alerts"],
+        decoys: ["strings", "booleans", "numbers"]
     },
     {
-        question: "This is question 2?",
-        answer: ["This is the correct answer for Q2."],
-        decoys: ["decoy 1", "decoy 2", "decoy 3"]
+        question: "The condition in an if / else statement is enclosed with ______.",
+        answer: ["parenthesis"],
+        decoys: ["quotes", "curly brackets", "square brackets"]
     },
     {
-        question: "This is question 3?",
-        answer: ["This is the correct answer for Q3."],
-        decoys: ["decoy 1", "decoy 2", "decoy 3"]
+        question: "Arrays in JavaScript can be used to store ______.",
+        answer: ["all of the above"],
+        decoys: ["numbers and strings", "other arrays", "booleans"]
     },
     {
-        question: "This is question 4?",
-        answer: ["This is the correct answer for Q4."],
-        decoys: ["decoy 1", "decoy 2", "decoy 3"]
+        question: "String values must be enclosed within ______ when being assigned to variables.",
+        answer: ["quotes"],
+        decoys: ["commas", "curly brackets", "parenthesis"]
     }
 ];
 
