@@ -21,8 +21,24 @@
     margin: 50px 30%;
 }
 
+.screen > * {
+    margin: 5px;
+}
+
+h1 {
+    font-size: 200%;
+}
+
 #start {
     text-align: center;
+}
+
+button {
+    padding: 5px;
+    border-radius: 7px;
+    border: none;
+    background-color: #5e14a4;
+    color: #ffffff;
 }
 
 #choices {
@@ -33,6 +49,6 @@
 
 #choices button {
     margin: 5px;
-    width: 200px;
+    width: 250px;
     text-align: start;
 }

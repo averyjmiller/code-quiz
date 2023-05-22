@@ -114,7 +114,7 @@ function renderTrivia() {
     
         for(i = 0; i < 4; i++){
             randomIndex = Math.floor(Math.random() * possibleChoices.length);
-            bttnChoices[i].textContent = possibleChoices[randomIndex];
+            bttnChoices[i].textContent = (i+1) + '. ' + possibleChoices[randomIndex];
             possibleChoices.splice(randomIndex, 1);
         }
         return answer
