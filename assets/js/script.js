@@ -128,9 +128,11 @@ function checkAnswer(userInput, answer) {
     if(userInput.textContent == answer) {
         score++;
         answerResultEl.textContent = "Correct!";
+        answerResultEl.setAttribute("style", "border-top: solid 1px grey; margin-top: 10px; padding: 10px");
     } else {
         time = time - 10;
         answerResultEl.textContent = "Wrong!";
+        answerResultEl.setAttribute("style", "border-top: solid 1px grey; margin-top: 10px; padding: 10px");
     }
 }
 
@@ -156,6 +158,10 @@ function renderSaveScoreElement() {
     generateEndMessage();
 
     answerResultEl.textContent = "";
+
+    while(answerResultEl.attributes.length > 0) {
+        answerResultEl.removeAttribute(answerResultEl.attributes[0].name);
+    }
 }
 
 function generateEndMessage() {
@@ -267,10 +273,18 @@ function renderStartElement() {
 
 function changeVisibility(element, visibility) {
     element.dataset.state = visibility;
-    if(visibility === 'visible') {
-        element.setAttribute("style", "display: block")
+    if(element.id == 'view-scores' || element.id == 'timer') {
+        if(visibility === 'visible') {
+            element.setAttribute("style", "visibility: visible");
+        } else {
+            element.setAttribute("style", "visibility: hidden");
+        }
     } else {
-        element.setAttribute("style", "display: none")
+        if(visibility === 'visible') {
+            element.setAttribute("style", "display: block");
+        } else {
+            element.setAttribute("style", "display: none");
+        }
     }
 }
 

@@ -13,11 +13,12 @@
     <body>
         <section class="container">
 
-            <span id="view-scores" data-state="visible">View high scores</span>
+            <div>
+                <span id="view-scores" data-state="visible">View high scores</span>
+                <section id="timer" data-state="visible">Time: 60</section>
+            </div>
 
-            <section id="timer" data-state="visible">Time: 60</section>
-
-            <section id="start" data-state="visible">
+            <section class="screen" id="start" data-state="visible">
                 <h1>Coding Quiz Challenge</h1>
                 <p>
                     Try to answer the following code-related questions
@@ -27,7 +28,7 @@
                 <button id="start-bttn">Start Quiz</button>
             </section>
 
-            <section id="quiz" data-state="hidden">
+            <section class="screen" id="quiz" data-state="hidden">
                 <h1 id="question">Question</h1>
                 <section id="choices">
                     <button>Choice 1</button>
@@ -38,7 +39,7 @@
                 <div id="answer-result"></div>
             </section>
 
-            <section id="save-score" data-state="hidden">
+            <section class="screen" id="save-score" data-state="hidden">
                 <h1 id="save-score-header">All done!</h1>
                 <span id="score"></span>
                 <form>
@@ -48,7 +49,7 @@
                 </form>
             </section>
 
-            <section id="high-scores" data-state="hidden">
+            <section class="screen" id="high-scores" data-state="hidden">
                 <h1>High scores</h1>
                 <ol id="score-list"></ol>
                 <button id="go-back">Go back</button>

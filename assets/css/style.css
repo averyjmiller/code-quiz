@@ -4,6 +4,35 @@
     display: none;
 } */
 
-/* .container {
-    
-} */
+* {
+    line-height: 1.5;
+}
+
+.container {
+    margin: 20px;
+}
+
+.container div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.screen {
+    margin: 50px 30%;
+}
+
+#start {
+    text-align: center;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#choices button {
+    margin: 5px;
+    width: 200px;
+    text-align: start;
+}
