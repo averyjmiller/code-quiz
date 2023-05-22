@@ -129,11 +129,11 @@ function checkAnswer(userInput, answer) {
     if(userInput == answer) {
         score++;
         answerResultEl.textContent = "Correct!";
-        answerResultEl.setAttribute("style", "border-top: solid 1px grey; margin-top: 10px; padding: 10px");
+        answerResultEl.setAttribute("style", "color: grey; border-top: solid 1px grey; margin-top: 10px; padding: 10px");
     } else {
         time = time - 10;
         answerResultEl.textContent = "Wrong!";
-        answerResultEl.setAttribute("style", "border-top: solid 1px grey; margin-top: 10px; padding: 10px");
+        answerResultEl.setAttribute("style", "color: grey; border-top: solid 1px grey; margin-top: 10px; padding: 10px");
     }
 }
 
