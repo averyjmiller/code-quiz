@@ -233,6 +233,7 @@ function renderHighScores() {
         var newScore = document.createElement('li');
         newScore.textContent = highScore.initials + " - " + highScore.score;
         scoreListEl.appendChild(newScore);
+        newScore.setAttribute("style", "margin: 5px 0; background-color: #faebd7;")
     }
 }
 
