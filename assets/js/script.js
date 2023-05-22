@@ -159,6 +159,7 @@ function renderSaveScoreElement() {
 
     answerResultEl.textContent = "";
 
+    // Method provided by https://stackoverflow.com/questions/1870441/remove-all-attributes
     while(answerResultEl.attributes.length > 0) {
         answerResultEl.removeAttribute(answerResultEl.attributes[0].name);
     }
