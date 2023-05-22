@@ -1,8 +1,13 @@
-/* #quiz,
+:root {
+    --primary-color: #4d0e87;
+    --secondary-color: #d818fa;
+}
+
+#quiz,
 #save-score,
 #high-scores {
     display: none;
-} */
+}
 
 * {
     line-height: 1.5;
@@ -15,6 +20,14 @@
 .container div {
     display: flex;
     justify-content: space-between;
+}
+
+#view-scores {
+    color: var(--secondary-color);
+}
+
+#view-scores:hover {
+    cursor: pointer;
 }
 
 .screen {
@@ -37,8 +50,13 @@ button {
     padding: 5px;
     border-radius: 7px;
     border: none;
-    background-color: #5e14a4;
+    background-color: var(--primary-color);
     color: #ffffff;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--secondary-color);
 }
 
 #choices {

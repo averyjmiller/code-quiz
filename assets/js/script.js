@@ -125,7 +125,8 @@ function renderTrivia() {
 }
 
 function checkAnswer(userInput, answer) {
-    if(userInput.textContent == answer) {
+    userInput = userInput.textContent.slice(3);
+    if(userInput == answer) {
         score++;
         answerResultEl.textContent = "Correct!";
         answerResultEl.setAttribute("style", "border-top: solid 1px grey; margin-top: 10px; padding: 10px");
