@@ -32,7 +32,7 @@
 }
 
 .screen {
-    margin: 50px auto;
+    margin: 150px auto;
     width: 600px;
 }
 
@@ -95,5 +95,39 @@ ol {
     button:hover {
         cursor: pointer;
         background-color: var(--secondary-color);
+    }
+}
+
+@media screen and (max-width: 656px) {
+    .screen {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 445px) {
+    h1 {
+        font-size: 150%;
+    }
+
+    button {
+        font-size: 130%;
+    }
+
+    #save-score,
+    #high-scores {
+        width: 100%;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #initials {
+        margin: 0;
+    }
+
+    form > * {
+        margin: 10px 0;
     }
 }
