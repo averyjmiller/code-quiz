@@ -33,11 +33,16 @@
 
 .screen {
     margin: 50px auto;
-    max-width: 450px;
+    width: 600px;
 }
 
 .screen > * {
     margin: 10px auto;
+}
+
+#save-score,
+#high-scores {
+    width: 400px;
 }
 
 h1 {
