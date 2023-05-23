@@ -19,6 +19,36 @@ var trivia = [
         question: "String values must be enclosed within ______ when being assigned to variables.",
         answer: ["quotes"],
         decoys: ["commas", "curly brackets", "parenthesis"]
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        answer: ["console.log"],
+        decoys: ["JavaScript", "terminal/bash", "for loops"]
+    },
+    {
+        question: "What does HTML stand for?",
+        answer: ["Hyper Text Markup Language"],
+        decoys: ["Hyper Trainer Marking Language", "Hyper Text Marketing Language", "Hyper Text Markup Leveler"]
+    },
+    {
+        question: "Inside which HTML element do we put the JavaScript?",
+        answer: ["<script>"],
+        decoys: ["<js>", "<scripting>", "<javascript>"]
+    },
+    {
+        question: "How do you write an IF statement for executing some code if 'i' is NOT equal to 5?",
+        answer: ["if (i != 5) {code;}"],
+        decoys: ["if i =! 5 then {code;}", "if i <> 5", "if (i <> 5)"]
+    },
+    {
+        question: "CSS stands for ______ Style Sheets.",
+        answer: ["Cascading"],
+        decoys: ["Creative", "Content", "Cartographic"]
+    },
+    {
+        question: "Below are examples of comparison operators except for which of the following?",
+        answer: ["&&"],
+        decoys: ["===", ">", "!="]
     }
 ];
 

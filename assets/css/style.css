@@ -61,10 +61,7 @@ button {
     color: #ffffff;
 }
 
-button:hover {
-    cursor: pointer;
-    background-color: var(--secondary-color);
-}
+
 
 #choices {
     display: flex;
@@ -92,4 +89,11 @@ form {
 ol {
     list-style: decimal;
     padding-left: 20px;
+}
+
+@media (pointer: fine) {
+    button:hover {
+        cursor: pointer;
+        background-color: var(--secondary-color);
+    }
 }
