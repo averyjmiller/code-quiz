@@ -12,12 +12,12 @@
 
     <body>
         <section class="container">
-
+            <!-- View scores and timer elements -->
             <div>
                 <span id="view-scores" data-state="visible">View high scores</span>
                 <section id="timer" data-state="visible" data-finalCount="false">Time: 60</section>
             </div>
-
+            <!-- Start screen -->
             <section class="screen" id="start" data-state="visible">
                 <h1>Coding Quiz Challenge</h1>
                 <p>
@@ -27,20 +27,20 @@
                 </p>
                 <button id="start-bttn">Start Quiz</button>
             </section>
-
+            <!-- Quiz screen -->
             <section class="screen" id="quiz" data-state="hidden">
-                <h1 id="question">Question</h1>
+                <h1 id="question"></h1>
                 <section id="choices">
-                    <button>Choice 1</button>
-                    <button>Choice 2</button>
-                    <button>Choice 3</button>
-                    <button>Choice 4</button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
                 </section>
                 <div id="answer-result"></div>
             </section>
-
+            <!-- Save score screen -->
             <section class="screen" id="save-score" data-state="hidden">
-                <h1 id="save-score-header">All done!</h1>
+                <h1 id="save-score-header"></h1>
                 <span id="score"></span>
                 <form>
                     <label for="initials">Enter initials:</label>
@@ -48,7 +48,7 @@
                     <button id="submit">Submit</button>
                 </form>
             </section>
-
+            <!-- High scores screen -->
             <section class="screen" id="high-scores" data-state="hidden">
                 <h1>High scores</h1>
                 <ol id="score-list"></ol>

@@ -90,6 +90,7 @@ function init() {
     return currentAnswer;
 }
 
+// Makes the quiz element visible and the view-scores and start elements hidden
 function renderQuizElement() {
     if(viewScoresEl.dataset.state == 'visible') {
         changeVisibility(viewScoresEl, 'hidden');
@@ -160,6 +161,7 @@ function renderTrivia() {
     }
 }
 
+// Takes in the user's answer and the correct answer and compares them
 function checkAnswer(userInput, answer) {
     userInput = userInput.textContent.slice(3);
     if(userInput == answer) {
@@ -173,8 +175,8 @@ function checkAnswer(userInput, answer) {
     }
 }
 
+// Makes the save-score element visible and all the other screens hidden
 function renderSaveScoreElement() {
-    // Hides the code quiz and the timer
     if(quizEl.dataset.state == 'visible') {
         changeVisibility(quizEl, 'hidden');
     }
@@ -194,14 +196,17 @@ function renderSaveScoreElement() {
 
     generateEndMessage();
 
+    // Clears the textContent of the answer result element
     answerResultEl.textContent = "";
 
     // Method provided by https://stackoverflow.com/questions/1870441/remove-all-attributes
+    // removes all the attributes of the answer result element
     while(answerResultEl.attributes.length > 0) {
         answerResultEl.removeAttribute(answerResultEl.attributes[0].name);
     }
 }
 
+// Generates the end message based on the user's quiz result
 function generateEndMessage() {
     var resultPercentage = (score / trivia.length) * 100;
 
@@ -217,6 +222,8 @@ function generateEndMessage() {
 
 }
 
+// Takes in the user's input in the form and assigns it to the scores object variable
+// Uses local storage to save the scores object variable
 function saveInitials() {
     var userInitials;
 
@@ -236,6 +243,7 @@ function saveInitials() {
     initialsEl.value = "";
 }
 
+// Makes the high scores element visible and all other screens hidden
 function renderHighScoresElement() {
     if(quizEl.dataset.state == 'visible') {
         changeVisibility(quizEl, 'hidden');
@@ -262,6 +270,7 @@ function renderHighScoresElement() {
     }
 }
 
+// Renders the saved score from the local storage and displays it in a list in the high scores element
 function renderHighScores() {
     var highScore = JSON.parse(localStorage.getItem("scores"));
 
@@ -274,6 +283,7 @@ function renderHighScores() {
 }
 
 // Method provided by https://www.w3schools.com/jsref/met_node_removechild.asp
+// Removes all of the child nodes in the high scores list and removes the item from local storage
 function clearHighScores() {
     while(scoreListEl.hasChildNodes()) {
         scoreListEl.removeChild(scoreListEl.firstChild);
@@ -282,6 +292,7 @@ function clearHighScores() {
     localStorage.removeItem("scores");
 }
 
+// Makes the start screen element visible and all other screens hidden
 function renderStartElement() {
     if(quizEl.dataset.state == 'visible') {
         changeVisibility(quizEl, 'hidden');
@@ -310,6 +321,9 @@ function renderStartElement() {
     timerEl.textContent = "Time: 60";
 }
 
+// Changes the visibility of the desired element
+// visibility parameter accepts the following inputs: 'visible', 'hidden'
+// 'view-scores' and 'timer' elements are given different attributes for styling purposes
 function changeVisibility(element, visibility) {
     element.dataset.state = visibility;
     if(element.id == 'view-scores' || element.id == 'timer') {
@@ -347,7 +361,7 @@ choicesEl.addEventListener("click", function(event) {
     }
 });
 
-// Event listener for when the user submits their initials to save their score
+// When the user submits, their initials and score is saved and displayed
 submitBttn.addEventListener("click", function(event) {
     event.preventDefault();
     
@@ -356,18 +370,21 @@ submitBttn.addEventListener("click", function(event) {
     renderHighScores();
 });
 
+// When the user clicks the view scores element, the high scores are rendered
 viewScoresEl.addEventListener("click", function(event) {
     event.preventDefault();
 
     renderHighScoresElement();
 });
 
+// When the user clicks the back button in the high scores screen, the start screen element is rendered
 backBttn.addEventListener("click", function(event) {
     event.preventDefault();
 
     renderStartElement();
 });
 
+// When the user clicks the clear scores button, the high scores are deleted
 clearScoresBttn.addEventListener("click", function(event) {
     event.preventDefault();
 
