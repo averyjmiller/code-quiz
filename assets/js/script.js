@@ -82,6 +82,7 @@ var score;
 function init() {
     triviaIndex = -1;
     time = 59;
+    timerEl.dataset.finalCount = 'false';
     score = 0;
     renderQuizElement();
     setTime();
@@ -108,6 +109,11 @@ function setTime() {
     var timerInterval = setInterval(function() {
         timerEl.textContent = "Time: " + time;
         time--;
+
+        if(time < 10 && timerEl.dataset.finalCount == 'false') {
+            timerEl.setAttribute("style", "color: red; font-weight: bolder;");
+            timerEl.dataset.finalCount = 'true';
+        }
 
         if(time < 0) {
             clearInterval(timerInterval);
